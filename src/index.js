@@ -2,6 +2,8 @@ const lineReader = require("line-reader");
 const INPUT_FILE = "input.txt";
 
 const data = {};
+const list = [];
+let maxIdx = 0;
 
 const findElfWithMaxCalories = () => {
   let i = 1;
@@ -14,14 +16,11 @@ const findElfWithMaxCalories = () => {
       if (!(currentElf in data)) {
         data[currentElf] = 0;
       }
-
       data[currentElf] += parseInt(line, 10);
     }
 
     if (last) {
       const { elfWithMaxCalories, maxCalories } = calculateMaxCalories();
-      console.log('elfWithMaxCalories', elfWithMaxCalories);
-      console.log('maxCalories', maxCalories)
     }
   });
 };
@@ -45,5 +44,3 @@ const calculateMaxCalories = () => {
 };
 
 findElfWithMaxCalories();
-
-console.log("data", data);
